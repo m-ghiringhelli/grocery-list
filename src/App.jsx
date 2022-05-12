@@ -20,6 +20,8 @@ function reducer(groceries, action) {
         }
         return grocery 
       })
+    case ACTIONS.REMOVE_FROM_CART:
+      return groceries.filter((grocery) => grocery.id !== action.payload.id)
   }
 }
 
