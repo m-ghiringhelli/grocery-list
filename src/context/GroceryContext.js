@@ -9,37 +9,37 @@ function newGrocery(name) {
   }  
 
 function reducer(groceries, action) {
-    switch (action.type) {
-      case ACTIONS.ADD_GROCERY:
-        return [...groceries, newGrocery(action.payload.name)]
-      case ACTIONS.PUT_IN_CART:
-        return groceries.map((grocery) => {
-          if (grocery.id === action.payload.id) {
-            return { ...grocery, inCart: !grocery.inCart }
-          }
-          return grocery 
-        })
-      case ACTIONS.EDITING:
-        return groceries.map((grocery) => {
-          if (grocery.id === action.payload.id) {
-            return { ...grocery, editing: true }
-          }
-            return grocery 
-          })
-      case ACTIONS.UPDATE:
-        return groceries.map((grocery) => {
-          if (grocery.id === action.payload.id) {
-            console.log(grocery);
-            return { ...grocery, name: action.payload.name, editing: false }
-          }
-            return grocery 
-          })
-      case ACTIONS.REMOVE_FROM_CART:
+  switch (action.type) {
+    case ACTIONS.ADD_GROCERY:
+      return [...groceries, newGrocery(action.payload.name)]
+    case ACTIONS.PUT_IN_CART:
+      return groceries.map((grocery) => {
+        if (grocery.id === action.payload.id) {
+          return { ...grocery, inCart: !grocery.inCart }
+        }
+        return grocery 
+      })
+    case ACTIONS.EDITING:
+      return groceries.map((grocery) => {
+        if (grocery.id === action.payload.id) {
+          return { ...grocery, editing: true }
+        }
+        return grocery 
+      })
+    case ACTIONS.UPDATE:
+      return groceries.map((grocery) => {
+        if (grocery.id === action.payload.id) {
+          console.log(action.payload.name)
+          return { ...grocery, name: action.payload.name, editing: false }
+        }
+        return grocery 
+      })
+    case ACTIONS.REMOVE_FROM_CART:
         return groceries.filter((grocery) => grocery.id !== action.payload.id)
       default: 
         return groceries
-    }
   }
+}
 
 export function ProvideGroceries({ children }) {
   const [groceries, dispatch] = useReducer(reducer, initialState);

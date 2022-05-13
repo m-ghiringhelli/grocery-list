@@ -6,7 +6,7 @@ export default function Grocery({ grocery, dispatch }) {
 
   function handleEdit(e) {
     e.preventDefault();
-    dispatch({ type: ACTIONS.UPDATE, payload: { id: grocery.id } });
+    dispatch({ type: ACTIONS.UPDATE, payload: { id: grocery.id, name: editedGrocery } });
     setEditedGrocery('');
   }
   return (
