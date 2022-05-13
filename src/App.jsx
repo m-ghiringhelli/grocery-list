@@ -1,14 +1,15 @@
 import React, { useReducer, useState } from 'react';
 import Grocery from './components/Grocery';
-import EditGrocery from './components/EditGrocery';
+import Header from './components/Header'
 import { useGroceries } from './hooks/useGroceries';
 
 export const ACTIONS = {
   ADD_GROCERY: 'add-grocery',
   PUT_IN_CART: 'put-in-cart',
-  REMOVE_FROM_CART: 'remove from cart',
+  REMOVE_FROM_CART: 'remove-from-cart',
   EDITING: 'editing',
-  UPDATE: 'update'
+  UPDATE: 'update',
+  CLEAR_CART: 'clear-cart'
 }
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <>
+      <Header />
       <form onSubmit={handleSubmit}>
         <label>
           Add to list:

@@ -36,8 +36,10 @@ function reducer(groceries, action) {
       })
     case ACTIONS.REMOVE_FROM_CART:
         return groceries.filter((grocery) => grocery.id !== action.payload.id)
-      default: 
-        return groceries
+    case ACTIONS.CLEAR_CART:
+        return [];
+    default: 
+      return groceries
   }
 }
 
