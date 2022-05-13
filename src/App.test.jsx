@@ -4,10 +4,15 @@ import App from './App';
 import { GroceryContext } from './context/GroceryContext';
 import { ProvideGroceries } from './context/GroceryContext';
 
-test('shows header on page load', () => {
+beforeEach(() => {
   render(
     <ProvideGroceries>
       <App />
     </ProvideGroceries>
   )
+})
+
+test('shows header on page load', () => {
+  const header = screen.getByRole('heading');
+  expect(header).toHaveTextContent(/shopping/);
 })
