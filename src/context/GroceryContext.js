@@ -5,7 +5,7 @@ export const GroceryContext = createContext();
 const initialState = [];
 
 function newGrocery(name) {
-    return { id: Date.now(), name: name, inCart: false }
+    return { id: Date.now(), name: name, inCart: false, editing: false }
   }  
 
 function reducer(groceries, action) {
@@ -19,6 +19,13 @@ function reducer(groceries, action) {
           }
           return grocery 
         })
+      case ACTIONS.EDITING:
+        return groceries.map((grocery) => {
+          if (grocery.id === action.payload.id) {
+            return { ...grocery, editing: true }
+          }
+            return grocery 
+          })
       case ACTIONS.REMOVE_FROM_CART:
         return groceries.filter((grocery) => grocery.id !== action.payload.id)
       default: 

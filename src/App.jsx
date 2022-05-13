@@ -1,11 +1,13 @@
 import React, { useReducer, useState } from 'react';
 import Grocery from './components/Grocery';
+import EditGrocery from './components/EditGrocery';
 import { useGroceries } from './hooks/useGroceries';
 
 export const ACTIONS = {
   ADD_GROCERY: 'add-grocery',
   PUT_IN_CART: 'put-in-cart',
-  REMOVE_FROM_CART: 'remove from cart'
+  REMOVE_FROM_CART: 'remove from cart',
+  EDITING: 'editing'
 }
 
 export default function App() {
@@ -17,7 +19,6 @@ export default function App() {
     dispatch({ type: ACTIONS.ADD_GROCERY, payload: { name } });
     setName('');
   }
-  console.log(groceries);
 
   return (
     <>
