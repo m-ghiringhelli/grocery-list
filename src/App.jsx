@@ -2,6 +2,7 @@ import React, { useReducer, useState } from 'react';
 import Grocery from './components/Grocery';
 import Header from './components/Header'
 import { useGroceries } from './hooks/useGroceries';
+import style from './App.css';
 
 export const ACTIONS = {
   ADD_GROCERY: 'add-grocery',
@@ -36,9 +37,11 @@ export default function App() {
         </label>
         <button>Add to list</button>
       </form>
-      {groceries.map((grocery) => (
-        <Grocery key={grocery.id} grocery={grocery} dispatch={dispatch} />
-      ))}
+      <div className={style.groceryList}>
+        {groceries.map((grocery) => (
+          <Grocery key={grocery.id} grocery={grocery} dispatch={dispatch} />
+        ))}
+      </div>
     </>
   );
 }

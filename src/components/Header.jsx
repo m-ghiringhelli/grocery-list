@@ -16,7 +16,7 @@ export default function Header() {
         shopping list
       </h1>
       <p>Total items: 
-        <span>
+        <span data-testid='list-counter'>
           {groceries.length}
         </span>
         <span onClick={clearGroceries}>

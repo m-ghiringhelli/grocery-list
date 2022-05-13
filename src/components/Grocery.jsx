@@ -10,7 +10,7 @@ export default function Grocery({ grocery, dispatch }) {
     setEditedGrocery('');
   }
   return (
-    <>
+    <div>
       {grocery.editing ?
         <form onSubmit={handleEdit}>
           <input 
@@ -47,6 +47,6 @@ export default function Grocery({ grocery, dispatch }) {
       >
         Delete
       </button>
-    </>
+    </div>
   )
 }
