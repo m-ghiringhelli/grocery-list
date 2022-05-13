@@ -1,5 +1,5 @@
-import React, { createContext} from 'react';
+import { createContext, useContext} from 'react';
 
 const GroceryContext = createContext();
 
-export default GroceryContext
+export const useGroceryContext = () => useContext();

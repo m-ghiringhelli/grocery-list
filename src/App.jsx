@@ -7,7 +7,7 @@ export const ACTIONS = {
   REMOVE_FROM_CART: 'remove from cart'
 }
 
-const initialState = [];
+
 
 function reducer(groceries, action) {
   switch (action.type) {
@@ -32,7 +32,7 @@ function newGrocery(name) {
 }
 
 export default function App() {
-  const [groceries, dispatch] = useReducer(reducer, initialState);
+  
   const [name, setName] = useState('');
 
   function handleSubmit(e) {
