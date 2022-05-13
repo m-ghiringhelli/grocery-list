@@ -7,7 +7,8 @@ export const ACTIONS = {
   ADD_GROCERY: 'add-grocery',
   PUT_IN_CART: 'put-in-cart',
   REMOVE_FROM_CART: 'remove from cart',
-  EDITING: 'editing'
+  EDITING: 'editing',
+  UPDATE: 'update'
 }
 
 export default function App() {

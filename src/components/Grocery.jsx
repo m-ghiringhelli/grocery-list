@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ACTIONS } from '../App.jsx'
 
 export default function Grocery({ grocery, dispatch }) {
+  const [editedGrocery, setEditedGrocery] = useState('');
+
+  function handleEdit(e) {
+    e.preventDefault();
+    dispatch({ type: ACTIONS.UPDATE, payload: { id: grocery.id } });
+    setEditedGrocery('');
+  }
   return (
     <>
       {grocery.editing ?
-        <form>
-          <input />
+        <form onSubmit={handleEdit}>
+          <input 
+            type='text'
+            value={editedGrocery}
+            onChange={(e) => setEditedGrocery(e.target.value)}
+          />
           <button>
             Save
           </button>
@@ -15,7 +26,7 @@ export default function Grocery({ grocery, dispatch }) {
           <span
             style={{ color: grocery.inCart ? '#aaa' : '#000' }}
             onClick={() => dispatch(
-              { type: ACTIONS.PUT_IN_CART, payload: { id: grocery.id } }
+              { type: ACTIONS.PUT_IN_CART, payload: { grocery } }
             )}
           >
             {grocery.name}

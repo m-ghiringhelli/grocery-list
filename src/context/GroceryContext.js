@@ -26,6 +26,14 @@ function reducer(groceries, action) {
           }
             return grocery 
           })
+      case ACTIONS.UPDATE:
+        return groceries.map((grocery) => {
+          if (grocery.id === action.payload.id) {
+            console.log(grocery);
+            return { ...grocery, name: action.payload.name, editing: false }
+          }
+            return grocery 
+          })
       case ACTIONS.REMOVE_FROM_CART:
         return groceries.filter((grocery) => grocery.id !== action.payload.id)
       default: 
