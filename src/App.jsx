@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import Grocery from './components/Grocery';
+import { useGroceries } from './hooks/useGroceries';
 
 export const ACTIONS = {
   ADD_GROCERY: 'add-grocery',
@@ -7,32 +8,8 @@ export const ACTIONS = {
   REMOVE_FROM_CART: 'remove from cart'
 }
 
-
-
-function reducer(groceries, action) {
-  switch (action.type) {
-    case ACTIONS.ADD_GROCERY:
-      return [...groceries, newGrocery(action.payload.name)]
-    case ACTIONS.PUT_IN_CART:
-      return groceries.map((grocery) => {
-        if (grocery.id === action.payload.id) {
-          return { ...grocery, inCart: !grocery.inCart }
-        }
-        return grocery 
-      })
-    case ACTIONS.REMOVE_FROM_CART:
-      return groceries.filter((grocery) => grocery.id !== action.payload.id)
-    default: 
-      return groceries
-  }
-}
-
-function newGrocery(name) {
-  return { id: Date.now(), name: name, inCart: false }
-}
-
 export default function App() {
-  
+  const { groceries, dispatch } = useGroceries();
   const [name, setName] = useState('');
 
   function handleSubmit(e) {
@@ -40,7 +17,6 @@ export default function App() {
     dispatch({ type: ACTIONS.ADD_GROCERY, payload: { name } });
     setName('');
   }
-
   console.log(groceries);
 
   return (
